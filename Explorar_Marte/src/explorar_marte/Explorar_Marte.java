@@ -5,6 +5,7 @@
  */
 package explorar_marte;
 
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -19,34 +20,48 @@ public class Explorar_Marte {
         Scanner scan = new Scanner(System.in);
         scan.useLocale(Locale.ENGLISH);
 
-        //Planalto p = new Planalto();
-        //PontosCardeais pc = new PontosCardeais();
+        ArrayList<Sonda> list = new ArrayList<>();
         Sonda sonda = new Sonda();
-        Sonda[] sondas = new Sonda[2];
-        int cont = 0;
+        Sonda sondas[] = new Sonda[2];
+        int cont = 0, x, y;
+        String c, mover;
 
-        System.out.println("Entre com os valores X e Y do Planalto");
+        System.out.print("Entre com os valores X e Y do Planalto: ");
         String[] plano = scan.nextLine().split(" ");
-        Planalto p = new Planalto(Integer.parseInt(plano[0]), Integer.parseInt(plano[1]));
+        int a = Integer.parseInt(plano[0]);
+        int l = Integer.parseInt(plano[1]);
+//        sonda.setAltura(Integer.parseInt(plano[0]));
+//        sonda.setLargura(Integer.parseInt(plano[1]));
+        //Planalto p = new Planalto(Integer.parseInt(plano[0]), Integer.parseInt(plano[1]));
         //5 5 scan.close();
         do {
 
-            System.out.println("Entre com a posição inicial da sonda.\n"
-                    + "Eixo X, Y e um dos Pontos Cardeais: N, S, E, W");
-            String[] valor = scan.nextLine().split(" ");
-            sonda.Posicao(Integer.parseInt(valor[0]), Integer.parseInt(valor[1]), valor[2]);
-            //pc.PontoCardeal(valor[2].toUpperCase().toString());
-            System.out.println("Controles: R - Right, L - Left e M - Move");
-            String mover = scan.nextLine();
-            sonda.MovimentarSonda(mover);
 
+            System.out.print("Posição sonda.\n"
+                    + "Eixo X, Y e um dos Pontos Cardeais: N, S, E, W: ");
+            String[] valor = scan.nextLine().split(" ");
+            x = Integer.parseInt(valor[0]);
+            y = Integer.parseInt(valor[1]);
+            c = valor[2];
+//            sonda.setEixo_X(Integer.parseInt(valor[0]));
+//            sonda.setEixo_Y(Integer.parseInt(valor[1]));
+//            sonda.setPontoCardeal(valor[2].toUpperCase());
+            //sonda.Posicao(Integer.parseInt(valor[0]), Integer.parseInt(valor[1]), valor[2]);
+            //pc.PontoCardeal(valor[2].toUpperCase().toString());
+            System.out.print("Controles: R - Right, L - Left e M - Move: ");
+            mover = scan.nextLine().toUpperCase();
+            //sonda.setMove(mover);
+            //sonda.MovimentarSonda(mover);
+            sonda.MovimentarSonda(a, l, x, y, c, mover);
             sondas[cont] = sonda;
+            list.add(sondas[cont]);// = sonda.MovimentarSonda(a, l, x, y, c, mover);
             cont++;
             //scan.close();
-            
-        } while (cont < 2);
 
-        for (var item : sondas) {
+        } while (cont < 2);
+        
+        System.out.println(sonda.toString());
+        for (var item : list) {
 
             System.out.println(item);
         }
