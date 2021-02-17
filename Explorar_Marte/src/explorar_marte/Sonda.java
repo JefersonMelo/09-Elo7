@@ -8,33 +8,45 @@ package explorar_marte;
 /**
  * @author JefMelo
  */
-public class Sonda extends Planalto{
+public class Sonda {
 
     private int eixo_X;
     private int eixo_Y;
+    private int largura;
+    private int altura;
     private String pontoCardeal;
     private String move;
 
     //PontosCardeais pc = new PontosCardeais();
-    Planalto plano;// = new Planalto();
-    PontosCardeais pc;// = new PontosCardeais();
-    
+//    Planalto plano;// = new Planalto();
+//    PontosCardeais pc;// = new PontosCardeais();
+
     public Sonda() {
     }
 
-    public void Posicao(int eixo_X, int eixo_Y, String card) {
+//    public void Posicao(int eixo_X, int eixo_Y, String card) {
+//        this.eixo_X = eixo_X;
+//        this.eixo_Y = eixo_Y;
+//        this.pontoCardeal = card;
+//    }
+//    
+//     public void Planalto(int largura, int altura) {
+//        this.largura = largura;
+//        this.altura = altura;
+//        
+//    }
+
+    public void MovimentarSonda(int altura, int largura, int eixo_X, int eixo_Y, String card, String mover) {
+        int contE = 0, contD = 0, contM = 0;
+        this.altura = altura;
+        this.largura = largura;
         this.eixo_X = eixo_X;
         this.eixo_Y = eixo_Y;
-        this.pontoCardeal = card;
-    }
-
-    public void MovimentarSonda(String mover) {
-        int contE = 0, contD = 0, contM = 0, larg, alt;
-        larg = plano.getLargura();
-        alt  = plano.getAltura();
+        this.pontoCardeal = card.toUpperCase();
         this.move = mover.toUpperCase();
-        String card = this.pontoCardeal;//pc.getCard().toUpperCase();
-        String novoPonto = "";
+        //this.move = mover.toUpperCase();
+        //String card = this.pontoCardeal;//pc.getCard().toUpperCase();
+        //String novoPonto = "";
         char moveInd;
 
         for (int i = 0; i < this.move.length(); i++) {
@@ -45,66 +57,67 @@ public class Sonda extends Planalto{
 
                 case 'L'://Esquerda -90º
                     contE++;
-                    switch (card) {
+                    switch (this.pontoCardeal) {
                         case "N":
-                            novoPonto = "W";
-                            //pc.PontoCardeal("W");
+                            //novoPonto = "W";
+                            this.pontoCardeal = "W";
                             break;
                         case "W":
-                            novoPonto = "S";
-                            //pc.PontoCardeal("S");
+                            //novoPonto = "S";
+                            this.pontoCardeal = "S";
                             break;
                         case "S":
-                            novoPonto = "E";
-                            //pc.PontoCardeal("E");
+                            //novoPonto = "E";
+                            this.pontoCardeal = "E";
                             break;
                         case "E":
-                            novoPonto = "N";
-                            //pc.PontoCardeal("N");
+                            //novoPonto = "N";
+                            this.pontoCardeal = "N";
                             break;
                     }
                     break;
 
                 case 'R'://Direita +90º
                     contD++;
-                    switch (card) {
+                    switch (this.pontoCardeal) {
                         case "N":
-                            novoPonto = "E";
-                            //pc.PontoCardeal("E");
+                            //novoPonto = "E";
+                            this.pontoCardeal = "E";
                             break;
                         case "E":
-                            novoPonto = "S";
-                            //pc.PontoCardeal("S");
+                            //novoPonto = "S";
+                            this.pontoCardeal = "S";
                             break;
                         case "S":
-                            novoPonto = "W";
-                            //pc.PontoCardeal("W");
+                            //novoPonto = "W";
+                            this.pontoCardeal = "W";
                             break;
                         case "W":
-                            novoPonto = "N";
-                            //pc.PontoCardeal("N");
+                            //novoPonto = "N";
+                            this.pontoCardeal = "N";
                             break;
                     }
                     break;
 
                 case 'M'://Movimenta                  
                     contM++;
-                    if (novoPonto.equals("N") && larg > this.eixo_Y) {
+                    if (this.pontoCardeal.equals("N") && this.largura > this.eixo_Y) {
                         this.eixo_Y += 1;
-                        this.pontoCardeal = novoPonto;
-                    } else if (novoPonto.equals("S") && larg > this.eixo_Y) {
+                        //this.pontoCardeal = novoPonto;
+                    } else if (this.pontoCardeal.equals("S") && this.largura > this.eixo_Y) {
                         this.eixo_Y -= 1;
-                        this.pontoCardeal = novoPonto;
-                    } else if (novoPonto.equals("E") && alt > this.eixo_X) {
+                        //this.pontoCardeal = novoPonto;
+                    } else if (this.pontoCardeal.equals("E") && this.altura > this.eixo_X) {
                         this.eixo_X += 1;
-                        this.pontoCardeal = novoPonto;
-                    } else if (novoPonto.equals("W") && alt > this.eixo_Y) {
+                        //this.pontoCardeal = novoPonto;
+                    } else if (this.pontoCardeal.equals("W") && this.altura > this.eixo_Y) {
                         this.eixo_X -= 1;
-                        this.pontoCardeal = novoPonto;
+                        //this.pontoCardeal = novoPonto;
                     }
                     break;
             }
         }
+        //return this.eixo_X + " " + this.eixo_Y + " " + this.pontoCardeal;
     }
 
     @Override
@@ -130,6 +143,22 @@ public class Sonda extends Planalto{
         this.eixo_Y = eixo_Y;
     }
 
+    public int getLargura() {
+        return largura;
+    }
+
+    public void setLargura(int largura) {
+        this.largura = largura;
+    }
+
+    public int getAltura() {
+        return altura;
+    }
+
+    public void setAltura(int altura) {
+        this.altura = altura;
+    }
+       
     public String getPontoCardeal() {
         return pontoCardeal;
     }
