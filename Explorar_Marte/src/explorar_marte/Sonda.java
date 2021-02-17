@@ -8,28 +8,33 @@ package explorar_marte;
 /**
  * @author JefMelo
  */
-public class Sonda {
+public class Sonda extends Planalto{
 
     private int eixo_X;
     private int eixo_Y;
     private String pontoCardeal;
     private String move;
 
-    PontosCardeais pc = new PontosCardeais();
-
+    //PontosCardeais pc = new PontosCardeais();
+    Planalto plano;// = new Planalto();
+    PontosCardeais pc;// = new PontosCardeais();
+    
     public Sonda() {
     }
 
-    public void posicao(int eixo_X, int eixo_Y, String ponto) {
+    public void Posicao(int eixo_X, int eixo_Y, String card) {
         this.eixo_X = eixo_X;
         this.eixo_Y = eixo_Y;
-        this.pontoCardeal = ponto;
+        this.pontoCardeal = card;
     }
 
-    public void MovimentarSonda(String move) {
-        int contE = 0, contD = 0, contM = 0;
-        this.move = move.toUpperCase();
-        String card = this.pontoCardeal;
+    public void MovimentarSonda(String mover) {
+        int contE = 0, contD = 0, contM = 0, larg, alt;
+        larg = plano.getLargura();
+        alt  = plano.getAltura();
+        this.move = mover.toUpperCase();
+        String card = this.pontoCardeal;//pc.getCard().toUpperCase();
+        String novoPonto = "";
         char moveInd;
 
         for (int i = 0; i < this.move.length(); i++) {
@@ -42,18 +47,20 @@ public class Sonda {
                     contE++;
                     switch (card) {
                         case "N":
-                            pc.PontoCardeal("W");
+                            novoPonto = "W";
+                            //pc.PontoCardeal("W");
                             break;
                         case "W":
-                            pc.PontoCardeal("S");
+                            novoPonto = "S";
+                            //pc.PontoCardeal("S");
                             break;
                         case "S":
-                            pc.PontoCardeal("E");
+                            novoPonto = "E";
+                            //pc.PontoCardeal("E");
                             break;
                         case "E":
-                            pc.PontoCardeal("N");
-                            break;
-                        default:
+                            novoPonto = "N";
+                            //pc.PontoCardeal("N");
                             break;
                     }
                     break;
@@ -62,29 +69,40 @@ public class Sonda {
                     contD++;
                     switch (card) {
                         case "N":
-                            pc.PontoCardeal("E");
+                            novoPonto = "E";
+                            //pc.PontoCardeal("E");
                             break;
                         case "E":
-                            pc.PontoCardeal("S");
+                            novoPonto = "S";
+                            //pc.PontoCardeal("S");
                             break;
                         case "S":
-                            pc.PontoCardeal("W");
+                            novoPonto = "W";
+                            //pc.PontoCardeal("W");
                             break;
                         case "W":
-                            pc.PontoCardeal("N");
-                            break;
-                        default:
+                            novoPonto = "N";
+                            //pc.PontoCardeal("N");
                             break;
                     }
                     break;
 
-                case 'M'://Movimenta
-                    
+                case 'M'://Movimenta                  
                     contM++;
+                    if (novoPonto.equals("N") && larg > this.eixo_Y) {
+                        this.eixo_Y += 1;
+                        this.pontoCardeal = novoPonto;
+                    } else if (novoPonto.equals("S") && larg > this.eixo_Y) {
+                        this.eixo_Y -= 1;
+                        this.pontoCardeal = novoPonto;
+                    } else if (novoPonto.equals("E") && alt > this.eixo_X) {
+                        this.eixo_X += 1;
+                        this.pontoCardeal = novoPonto;
+                    } else if (novoPonto.equals("W") && alt > this.eixo_Y) {
+                        this.eixo_X -= 1;
+                        this.pontoCardeal = novoPonto;
+                    }
                     break;
-
-                default:
-                    throw new AssertionError();
             }
         }
     }
@@ -92,7 +110,7 @@ public class Sonda {
     @Override
     public String toString() {
 
-        return this.eixo_X + " " + this.eixo_Y + " " + pc;
+        return this.eixo_X + " " + this.eixo_Y + " " + this.pontoCardeal;
 
     }
 
@@ -119,7 +137,7 @@ public class Sonda {
     public void setPontoCardeal(String movimento) {
         this.pontoCardeal = movimento;
     }
-    
+
     public String getMove() {
         return move;
     }

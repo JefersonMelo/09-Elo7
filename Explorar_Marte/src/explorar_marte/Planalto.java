@@ -14,12 +14,12 @@ public class Planalto {
 
     private int largura;
     private int altura;
-    private char pontosCardeais;
+    //private char pontosCardeais;
     //char[][] malha2D;
     public Planalto() {
     }
 
-    public void Malha(int largura, int altura) {
+    public Planalto(int largura, int altura) {
         this.largura = largura;
         this.altura = altura;
         
@@ -41,13 +41,13 @@ public class Planalto {
         this.altura = altura;
     }
 
-    public char getPontosCardeais() {
-        return pontosCardeais;
-    }
-
-    public void setPontosCardeais(char pontosCardeais) {
-        this.pontosCardeais = pontosCardeais;
-    }
+//    public char getPontosCardeais() {
+//        return pontosCardeais;
+//    }
+//
+//    public void setPontosCardeais(char pontosCardeais) {
+//        this.pontosCardeais = pontosCardeais;
+//    }
 
 //    public char[][] getMalha2D() {
 //        return malha2D;
