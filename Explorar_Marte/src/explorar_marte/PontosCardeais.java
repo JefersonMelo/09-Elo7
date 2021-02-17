@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package explorar_marte;
 
 /**
@@ -11,10 +6,6 @@ package explorar_marte;
 public class PontosCardeais {
 
     private String card;
-
-//    public PontosCardeais() {
-//
-//    }
 
     public String PontoCardeal(String ponto) {
         this.card = ponto;
@@ -44,8 +35,8 @@ public class PontosCardeais {
         return card;
     }
 
-//    private void setCard(String card) {
-//        this.card = card;
-//    }
+    public void setCard(String card) {
+        this.card = card;
+    }
 
 }
