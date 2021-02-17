@@ -12,13 +12,13 @@ public class PontosCardeais {
 
     private String card;
 
-    public PontosCardeais() {
+//    public PontosCardeais() {
+//
+//    }
 
-    }
-
-    public String PontoCardeal(String card) {
-        this.card = card;
-        switch (card.toUpperCase()) {
+    public String PontoCardeal(String ponto) {
+        this.card = ponto;
+        switch (this.card.toUpperCase()) {
             case "N":// Norte
                 this.card = "N";
                 break;
@@ -31,24 +31,21 @@ public class PontosCardeais {
             case "W":// Oeste
                 this.card = "W";
                 break;
-
-            default:
-                throw new AssertionError();
         }
         return this.card;
     }
 
-//     @Override
-//    public String toString() {
-//        return this.card;
-//    }
-//    
+     @Override
+    public String toString() {
+        return this.card;
+    }
+    
     public String getCard() {
         return card;
     }
 
-    public void setCard(String card) {
-        this.card = card;
-    }
+//    private void setCard(String card) {
+//        this.card = card;
+//    }
 
 }
