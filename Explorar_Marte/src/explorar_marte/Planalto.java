@@ -3,7 +3,7 @@ package explorar_marte;
 /**
  * @author JefMelo
  */
-public class Planalto {
+public class Planalto { // Não Está Sendo Utilizada
 
     private int largura;
     private int altura;
