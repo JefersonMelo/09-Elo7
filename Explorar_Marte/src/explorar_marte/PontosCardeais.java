@@ -3,7 +3,7 @@ package explorar_marte;
 /**
  * @author JefMelo
  */
-public class PontosCardeais {
+public class PontosCardeais { // Não Está Sendo Utilizada
 
     private String card;
 
