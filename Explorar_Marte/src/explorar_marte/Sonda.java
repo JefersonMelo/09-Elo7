@@ -108,48 +108,24 @@ public class Sonda {
         return eixo_X;
     }
 
-    public void setEixo_X(int eixo_X) {
-        this.eixo_X = eixo_X;
-    }
-
     public int getEixo_Y() {
         return eixo_Y;
-    }
-
-    public void setEixo_Y(int eixo_Y) {
-        this.eixo_Y = eixo_Y;
     }
 
     public int getLargura() {
         return largura;
     }
 
-    public void setLargura(int largura) {
-        this.largura = largura;
-    }
-
     public int getAltura() {
         return altura;
-    }
-
-    public void setAltura(int altura) {
-        this.altura = altura;
     }
 
     public String getPontoCardeal() {
         return pontoCardeal;
     }
 
-    public void setPontoCardeal(String movimento) {
-        this.pontoCardeal = movimento;
-    }
-
     public String getMove() {
         return move;
-    }
-
-    public void setMove(String move) {
-        this.move = move;
     }
 
 }
