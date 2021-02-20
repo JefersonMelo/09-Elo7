@@ -3,7 +3,7 @@ package explorar_marte;
 /**
  * @author JefMelo
  */
-public class Sonda {
+public class Sonda extends PontosCardeais {
 
     private int eixo_X;
     private int eixo_Y;
@@ -15,6 +15,7 @@ public class Sonda {
     public Sonda() {
     }
 
+    @SuppressWarnings("OverridableMethodCallInConstructor")
     public Sonda(int altura, int largura, int eixo_X, int eixo_Y, String card, String mover) {
 
         this.altura = altura;
@@ -31,49 +32,14 @@ public class Sonda {
             moveInd = this.move.charAt(i);
 
             switch (moveInd) {
-
+                // Lógica movida para Pontos Cardeais
                 case 'L'://Esquerda -90º  <--
-
-                    switch (this.pontoCardeal) {
-                        case "N":
-
-                            this.pontoCardeal = "W";
-                            break;
-                        case "W":
-
-                            this.pontoCardeal = "S";
-                            break;
-                        case "S":
-
-                            this.pontoCardeal = "E";
-                            break;
-                        case "E":
-
-                            this.pontoCardeal = "N";
-                            break;
-                    }
+                    this.pontoCardeal = SondaParaEsquerda(this.pontoCardeal);
                     break;
 
+                // Lógica movida para Pontos Cardeais
                 case 'R'://Direita +90º  -->
-
-                    switch (this.pontoCardeal) {
-                        case "N":
-
-                            this.pontoCardeal = "E";
-                            break;
-                        case "E":
-
-                            this.pontoCardeal = "S";
-                            break;
-                        case "S":
-
-                            this.pontoCardeal = "W";
-                            break;
-                        case "W":
-
-                            this.pontoCardeal = "N";
-                            break;
-                    }
+                    this.pontoCardeal = SondaParaDireita(this.pontoCardeal);
                     break;
 
                 case 'M'://Movimenta -->                 
@@ -92,7 +58,9 @@ public class Sonda {
 
                     }
                     break;
+
             }
+
         }
 
     }
@@ -103,29 +71,4 @@ public class Sonda {
         return this.eixo_X + " " + this.eixo_Y + " " + this.pontoCardeal;
 
     }
-
-    public int getEixo_X() {
-        return eixo_X;
-    }
-
-    public int getEixo_Y() {
-        return eixo_Y;
-    }
-
-    public int getLargura() {
-        return largura;
-    }
-
-    public int getAltura() {
-        return altura;
-    }
-
-    public String getPontoCardeal() {
-        return pontoCardeal;
-    }
-
-    public String getMove() {
-        return move;
-    }
-
 }
