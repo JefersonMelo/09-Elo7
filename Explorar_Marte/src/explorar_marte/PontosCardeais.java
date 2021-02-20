@@ -3,6 +3,11 @@ package explorar_marte;
 /**
  * @author JefMelo
  */
+
+/*PontosCardeais com dois métodos. SondaParaDireita
+e SondaParaEsquerda. Classes que executam o movimento da posição dos
+pontos cardeais
+*/
 public class PontosCardeais {
 
     private String card;
