@@ -1,5 +1,6 @@
 package explorar_marte;
 
+import Repositorio.RepositorioSondas;
 import java.util.Scanner;
 
 /**

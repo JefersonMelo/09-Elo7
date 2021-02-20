@@ -1,5 +1,6 @@
-package explorar_marte;
+package Repositorio;
 
+import explorar_marte.Sonda;
 import java.util.ArrayList;
 
 /**
