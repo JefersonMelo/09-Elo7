@@ -1,6 +1,5 @@
 package explorar_marte;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -8,10 +7,11 @@ import java.util.Scanner;
  */
 public class Explorar_Marte {
 
+    static RepositorioSondas repSondas = new RepositorioSondas();
+    
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        ArrayList<Sonda> list = new ArrayList<>();
         int cont = 0, x, y;
         String c, mover;
 
@@ -31,18 +31,15 @@ public class Explorar_Marte {
             System.out.print("Controles: R - Right, L - Left e M - Move: ");
             mover = scan.nextLine().toUpperCase();
 
-            if (cont == 1) {// Cria Sonda Um e Adiciona na Lista
-                Sonda s1 = new Sonda(a, l, x, y, c, mover);
-                list.add(s1);
-            } else {// Cria Sonda Dois e Adiciona na Lista
-                Sonda s2 = new Sonda(a, l, x, y, c, mover);
-                list.add(s2);
-            }
+            Sonda s = new Sonda(a, l, x, y, c, mover);
+            
+            repSondas.Adicionar(s);// repositório de sondas, inserir para listar no forEach
+            //trecho de POG removido
             cont++;
         } while (cont < 2);
 
         // Forech
-        list.forEach(item -> {
+        repSondas.Lista().forEach(item -> {
             System.out.println(item);
         });
 
